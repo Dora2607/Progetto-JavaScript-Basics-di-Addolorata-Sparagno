@@ -33,7 +33,7 @@
     <!--Font from Google-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Agbalumo&display=swap" rel="stylesheet">
 
     <!--Custom css file-->
     <link rel="stylesheet" href="assets/css/styles.css">
@@ -45,15 +45,26 @@
 <body>
     
     <main>
-        <div id="container">
-            <h1 id="title-page">Counter</h1>
-            <p id="value-counter">0</p>
-            <button id="minus-btn" class="btn">-</button>
-            <button id="plus-btn" class="btn">+</button>
+        <div id="container" class="container-counter">
+            <h1 id="title-page" class="title-counter">Counter</h1>
+            <p id="value-counter" class="value">0</p>
+            <div class="btn-container">
+                <button id="minus-btn" class="btn">-</button>
+                <button id="plus-btn" class="btn">+</button>
+            </div>
             
-            <button id="reload-btn" class="reload-btn"><img src="assets/img/icons8-ruota-a-destra-ios-16-filled-32.png" alt="Reload img"></button> 
-                <!--<a target="_blank" href="https://icons8.com/icon/8144/ruota-a-destra">Ruota a destra</a> icona di <a target="_blank" href="https://icons8.com">Icons8</a>-->
+            <button id="reload-btn" class="reload-btn">
+                <picture>
+                    <source media="(max-width: 767px )" srcset="assets\img\icons8-ruota-a-destra-ios-16-filled-16.png" alt="Reload img">
+                    <source media="(min-width: 768px )" srcset="assets\img\icons8-ruota-a-destra-ios-16-filled-32.png" alt="Reload img">
+                    <source media="(min-width: 1200px )" srcset="assets\img\icons8-ruota-a-destra-ios-16-filled-96.png" alt="Reload img">
+                               
+                    <img src="assets/img/icons8-ruota-a-destra-ios-16-filled-96.png" alt="Reload img">
+                </picture> 
+            </button> 
                 
+                <!--<a target="_blank" href="https://icons8.com/icon/8144/ruota-a-destra">Ruota a destra</a> icona di <a target="_blank" href="https://icons8.com">Icons8</a>-->
+                <!--<a target="_blank" href="https://icons8.com/icon/24qv3Brw2eP5/appuntamento-ricorrente">Appuntamento ricorrente</a> icona di <a target="_blank" href="https://icons8.com">Icons8</a>-->
                 
         </div>
     </main>
