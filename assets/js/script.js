@@ -17,10 +17,10 @@ function subtractCount(counter){
     return counter;
 }
 
-function updateCounter(value){
+// function updateCounter(value){
 
     
-}
+// }
 
 
 //DOM
@@ -31,13 +31,27 @@ const displayCounter = document.getElementById("value-counter");
 
 const btnContainer = document.querySelector(".btn-container");
 const buttons = btnContainer.querySelectorAll(".btn");
-console.log(buttons);
+// for (let button of buttons){
+//     console.log(button.getAttribute("id"));
+
+// };
+
+// buttons.forEach(button=> {
+//     console.log(button.getAttribute("id"));
+// });
 const plus = document.getElementById("plus-btn");
+
 const minus = document.getElementById("minus-btn");
  
 
 // Event
 
+// buttons.addEventListener("click",()=>{
+//     let flag = true;
+//     while (flag===true){
+
+//     }
+// })
 
 
  plus.addEventListener("click", ()=>{
