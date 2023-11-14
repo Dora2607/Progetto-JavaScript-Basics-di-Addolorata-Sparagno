@@ -19,7 +19,7 @@ function subtractCount(counter){
 
 // function updateCounter(value){
 
-    
+
 // }
 
 
@@ -42,7 +42,7 @@ const buttons = btnContainer.querySelectorAll(".btn");
 const plus = document.getElementById("plus-btn");
 
 const minus = document.getElementById("minus-btn");
- 
+
 
 // Event
 
@@ -53,19 +53,27 @@ const minus = document.getElementById("minus-btn");
 //     }
 // })
 
+const operations = new Map();
 
- plus.addEventListener("click", ()=>{
-     let number = getDisplay(displayCounter);
-     newValue = addCount(number);
-     displayCounter.textContent= newValue;
-     console.log(newValue);
- })
- minus.addEventListener("click", ()=>{
-     let number = getDisplay(displayCounter);
-     newValue = subtractCount(number);
-     displayCounter.textContent= newValue;
-     console.log(newValue);
- })
+operations.set("plus-btn", value => { return value + 1 })
+operations.set("minus-btn", value => { return value - 1 })
+
+buttons.forEach( buttons => {
+    buttons.addEventListener( "click", () => { displayCounter.textContent = operations.get(buttons.getAttribute("id"))(getDisplay(displayCounter)) } )
+})
+
+//  plus.addEventListener("click", ()=>{
+//      let number = getDisplay(displayCounter);
+//      newValue = addCount(number);
+//      displayCounter.textContent= newValue;
+//      console.log(newValue);
+//  })
+//  minus.addEventListener("click", ()=>{
+//      let number = getDisplay(displayCounter);
+//      newValue = subtractCount(number);
+//      displayCounter.textContent= newValue;
+//      console.log(newValue);
+//  })
 
 
 
