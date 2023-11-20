@@ -124,7 +124,7 @@ btnContainer.addEventListener("click", (e)=>{
     };
 }) 
  ``` 
-Questa funzione aggiunge un gestore di eventi al contenitore dei pulsanti, btnContainer.  Quando si verifica un evento di click, la funzione verifica se l’elemento cliccato è un pulsante all’interno del btnContainer.
+Viene aggiunto un gestore di eventi al contenitore dei pulsanti, btnContainer.  Quando si verifica un evento di click, la funzione verifica se l’elemento cliccato è un pulsante all’interno del btnContainer.
 
 Se l’elemento cliccato è un pulsante (operation != null), allora la funzione updateCounter viene chiamata con l’elemento pulsante come argomento. Questo permette di eseguire un’operazione specifica (come incrementare o decrementare il counter) in base al pulsante cliccato.
 
