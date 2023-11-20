@@ -140,5 +140,9 @@ reloadBtn.addEventListener("click", ()=>{
 Questo evento aggiunge un ascoltatore al pulsante reloadBtn. Quando l’utente clicca sul pulsante, il contenuto del displayCounter viene reimpostato a 0 e il colore del testo viene cambiato in bianco. In pratica, questo evento resetta il counter e ripristina il colore del testo ogni volta che l’utente clicca sul pulsante reloadBtn. Questa funzionalità è utile per ripristinare lo stato del counter e prepararlo per un nuovo conteggio.
 
 
+## Links
+
+[counter](https://dora2607.github.io/Progetto-JavaScript-Basics-di-Addolorata-Sparagno/): per provare l'applicazione
+
 ## Ringraziamenti 
 Vorrei esprimere la mia profonda gratitudine a start2impact per avermi fornito le conoscenze necessarie per realizzare questa applicazione. Grazie per avermi dato gli strumenti per trasformare un’idea in una realtà funzionante. Grazie!
