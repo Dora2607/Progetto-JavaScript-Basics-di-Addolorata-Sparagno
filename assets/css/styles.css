@@ -53,21 +53,6 @@ main{
 
 
 
-.value{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-
-}
-
-.btn-container {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    
-    
-}
-
 .btn { 
     width: 60px;
     border-radius: 8px;
@@ -126,7 +111,6 @@ main{
 
 .reload-btn:active{
     cursor: pointer;
-    
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     
 }
@@ -134,7 +118,6 @@ main{
 
 
 /*BreakPoints*/ 
-
 
 
 @media only screen and (min-width: 768px){
@@ -212,10 +195,6 @@ main{
         margin: -450px 0 0 -450px;
     }
 
-    .btn-container{
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
     .btn{
         width: 110px;
         font-size: 50px;        

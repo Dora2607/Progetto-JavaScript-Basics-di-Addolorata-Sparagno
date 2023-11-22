@@ -1,70 +1,59 @@
-//functions
+// Implementation of +/- buttons and counter value display using JavaScript
 
-function getDisplay(display){
-    let count = display.textContent;
-    let numberCount = parseInt(count);
-    return numberCount;
-}
-
-
-function addNumber(counter){
-    counter++;
-    return counter;
-}
-
-function subtractNumber(counter){
-    counter--;
-    return counter;
-}
-
-function changeColor(number, display){
-    if (number%2 ===0){
-        display.style.color="#fdf0d5";
-    }else{
-        display.style.color="#F1F181";
+// Function 
+function updateImage(){
+    if (window.matchMedia("(max-width: 767px)").matches){
+        reloadImage.src = "assets/img/icons8-ruota-a-destra-ios-16-filled-16.png";
+    } else {
+        reloadImage.src = "assets/img/icons8-ruota-a-destra-ios-16-filled-32.png";
     }
-    
-}
-
-function updateCounter(op){
-    let number = getDisplay(displayCounter);
-    if (op===plus){
-        newValue = addNumber(number);
-    }else {
-        newValue = subtractNumber(number);
-    };
-    changeColor(newValue, displayCounter);
-    displayCounter.textContent= newValue;
 }
 
 
+const container = document.getElementById("container");
 
-//DOM
+// I implement the value of the counter 
 
-const displayCounter = document.getElementById("value-counter");
-const btnContainer = document.querySelector(".btn-container");
-const plus = document.getElementById("plus-btn");
-const minus = document.getElementById("minus-btn");
-const reloadBtn = document.getElementById("reload-btn");
+const paragraph = document.createElement("p");
+paragraph.textContent = "0";
+paragraph.id = "value-counter";
+paragraph.style.width = "100%";
+paragraph.style.display = "flex";
+paragraph.style.justifyContent = "center";
+container.appendChild(paragraph);
 
+ 
+// I implement the container that contains the buttons
+const buttonContainer = document.createElement("div");
+buttonContainer.className = "btn-container";
+buttonContainer.style.width="100%";
+buttonContainer.style.display="flex";
+buttonContainer.style.justifyContent = "space-around";
+container.appendChild(buttonContainer);
 
+// I implement the + and - buttons
+const minusBtn = document.createElement("button");
+minusBtn.id = "minus-btn";
+minusBtn.textContent="-";
+const plusBtn = document.createElement("button");
+plusBtn.id = "plus-btn";
+plusBtn.textContent="+";
+buttonContainer.append(minusBtn, plusBtn);
 
-// Event
+let btn = buttonContainer.querySelectorAll("button");
+btn.forEach(button => {
+    button.classList.add("btn");
+});
 
-btnContainer.addEventListener("click", (e)=>{
-    let operation = e.target.closest("button");
-    if (operation!=null){
-        updateCounter(operation);
-    };
-}) 
+// I implement the reload button
 
-reloadBtn.addEventListener("click", ()=>{
-    displayCounter.textContent = 0;
-    displayCounter.style.color = "White";
-})
+const reloadButton = document.createElement("button");
+reloadButton.id = "reload-button";
+reloadButton.classList.add("reload-btn");
+const reloadImage = document.createElement("img");
+updateImage();
+reloadButton.appendChild(reloadImage);
+container.appendChild(reloadButton);
 
-
-
-
-
-
+// Resize event
+window.addEventListener("resize", updateImage);

@@ -25,8 +25,77 @@ Inoltre, è presente un terzo pulsante che consente di resettare il valore del c
 Non è necessaria alcuna installazione per utilizzare **Counter**. L'applicazione è completamente basata sul web, il che significa che può essere utilizzata direttamente nel tuo browser preferito. Non è richiesto alcun software aggiuntivo. Basta aprire il file `index.html` nel tuo browser per iniziare a utilizzare l'applicazione.
 
 ## Utilizzo
+Nelle prossime righe, illustrerò le logiche che ho adottato per implementare il progetto del counter. Suddividerò la spiegazione in due parti, nella prima illustrerò come sono stati implementati i pulsanti +/-, reload e il valore del counter; nella seconda parte verranno illustrate le scelte effettuate per l'effettivo funzionamento dell'applicazione. 
 
-Nelle prossime righe, illustrerò le logiche che ho adottato per implementare il progetto del counter. Ho iniziato suddividendo il problema in diverse parti, come segue:
+### Implementazione pulsanti e del valore counter con JavaScript
+
+Il codice descritto è situato nella cartella js, con il nome script.js 
+
+Ho creato vari elementi, presupponendo che nel file HTML ci fosse già un container e un tag h1. Questi elementi sono stati poi personalizzati con CSS. Vediamo di seguito quali sono: 
+
+```javascript
+const paragraph = document.createElement("p");
+paragraph.textContent = "0";
+paragraph.id = "value-counter";
+paragraph.style.width = "100%";
+paragraph.style.display = "flex";
+paragraph.style.justifyContent = "center";
+container.appendChild(paragraph);
+ ``` 
+Creazione del contatore: Crea un elemento di paragrafo, imposta il suo contenuto su “0”, gli assegna un ID e alcuni stili CSS, e lo aggiunge al container.
+
+
+```javascript
+const buttonContainer = document.createElement("div");
+buttonContainer.className = "btn-container";
+buttonContainer.style.width="100%";
+buttonContainer.style.display="flex";
+buttonContainer.style.justifyContent = "space-around";
+container.appendChild(buttonContainer);
+ ``` 
+Creazione del container dei pulsanti: Crea un elemento div, gli assegna una classe e alcuni stili CSS, e lo aggiunge al container.
+
+
+```javascript
+const minusBtn = document.createElement("button");
+minusBtn.id = "minus-btn";
+minusBtn.textContent="-";
+const plusBtn = document.createElement("button");
+plusBtn.id = "plus-btn";
+plusBtn.textContent="+";
+buttonContainer.append(minusBtn, plusBtn);
+
+let btn = buttonContainer.querySelectorAll("button");
+btn.forEach(button => {
+    button.classList.add("btn");
+});
+ ``` 
+Creazione dei pulsanti + e -: Crea due pulsanti, assegna loro un ID e un contenuto, e li aggiunge al container dei pulsanti. Inoltre, aggiunge la classe “btn” a entrambi i pulsanti.
+
+
+```javascript
+const reloadButton = document.createElement("button");
+reloadButton.id = "reload-button";
+reloadButton.classList.add("reload-btn");
+const reloadImage = document.createElement("img");
+updateImage();
+reloadButton.appendChild(reloadImage);
+container.appendChild(reloadButton);
+ ``` 
+Creazione del pulsante di reload: Crea un pulsante e un’immagine, aggiorna l’immagine utilizzando la funzione updateImage, aggiunge l’immagine al pulsante, e aggiunge il pulsante al container.
+
+
+
+```javascript
+window.addEventListener("resize", updateImage);
+ ``` 
+Aggiunge un “event listener” per l’evento resize della finestra che chiama la funzione updateImage ogni volta che la finestra viene ridimensionata.
+La funzione aggiorna l’immagine del pulsante di ricarica in base alla dimensione della finestra. Se la larghezza della finestra è inferiore o uguale a 767px, utilizza un’immagine più piccola. Altrimenti, utilizza un’immagine più grande.
+
+
+### Implementazione del codice per il funzionamento dell'applicazione
+
+Ho iniziato suddividendo il problema in diverse parti, come segue:
 
 1. **Lettura del valore del display**: Il primo passo è stato leggere il numero visualizzato sul display del counter.
 2. **Riconoscimento del bottone**: Successivamente, ho implementato una logica per riconoscere quale pulsante era stato cliccato dall’utente.
