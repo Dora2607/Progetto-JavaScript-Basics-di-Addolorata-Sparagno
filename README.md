@@ -88,6 +88,14 @@ Creazione del pulsante di reload: Crea un pulsante e un’immagine, aggiorna l�
 
 ```javascript
 window.addEventListener("resize", updateImage);
+
+function updateImage(){
+    if (window.matchMedia("(max-width: 767px)").matches){
+        reloadImage.src = "assets/img/icons8-ruota-a-destra-ios-16-filled-16.png";
+    } else {
+        reloadImage.src = "assets/img/icons8-ruota-a-destra-ios-16-filled-32.png";
+    }
+}
  ``` 
 Aggiunge un “event listener” per l’evento resize della finestra che chiama la funzione updateImage ogni volta che la finestra viene ridimensionata.
 La funzione aggiorna l’immagine del pulsante di ricarica in base alla dimensione della finestra. Se la larghezza della finestra è inferiore o uguale a 767px, utilizza un’immagine più piccola. Altrimenti, utilizza un’immagine più grande.
