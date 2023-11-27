@@ -31,58 +31,35 @@ Nelle prossime righe, illustrerò le logiche che ho adottato per implementare il
 
 Il codice descritto è situato nella cartella js, con il nome script.js 
 
-Ho creato vari elementi, presupponendo che nel file HTML ci fosse già un container e un tag h1. Questi elementi sono stati poi personalizzati con CSS. Vediamo di seguito quali sono: 
+Presupponendo che nel file HTML ci fosse già un container e un tag h1, sono stati aggiunti gli elementi "p", "div", "button" ecc, personalizzati con CSS. Di seguito è descritta la funzione per implementare gli elementi: 
 
 ```javascript
-const paragraph = document.createElement("p");
-paragraph.textContent = "0";
-paragraph.id = "value-counter";
-paragraph.style.width = "100%";
-paragraph.style.display = "flex";
-paragraph.style.justifyContent = "center";
-container.appendChild(paragraph);
+function createDomElement (tagName, id, innerHtml, className, container){
+    const element = document.createElement(tagName);
+    element.id = id;
+    element.innerHTML = innerHtml;
+    element.classList.add(className);
+    container.appendChild(element);
+    return element;
+
+}
  ``` 
-Creazione del contatore: Crea un elemento di paragrafo, imposta il suo contenuto su “0”, gli assegna un ID e alcuni stili CSS, e lo aggiunge al container.
+La funzione createDomElement è una funzione che crea e restituisce un elemento DOM con le proprietà specificate. La funzione accetta i seguenti parametri:
 
+tagName: una stringa che rappresenta il nome del tag dell’elemento da creare, come “p”, “div”, “img”, ecc.
+id: una stringa che rappresenta l’identificativo univoco dell’elemento.
+innerHtml: una stringa che rappresenta il contenuto HTML dell’elemento, che può includere altri elementi, testo o entità.
+className: una stringa che rappresenta il nome della classe CSS da applicare all’elemento, che può essere usata per definire lo stile o il comportamento dell’elemento.
+container: un elemento DOM che rappresenta il nodo padre a cui appendere l’elemento creato come figlio.
+La funzione esegue i seguenti passaggi:
 
-```javascript
-const buttonContainer = document.createElement("div");
-buttonContainer.className = "btn-container";
-buttonContainer.style.width="100%";
-buttonContainer.style.display="flex";
-buttonContainer.style.justifyContent = "space-around";
-container.appendChild(buttonContainer);
- ``` 
-Creazione del container dei pulsanti: Crea un elemento div, gli assegna una classe e alcuni stili CSS, e lo aggiunge al container.
-
-
-```javascript
-const minusBtn = document.createElement("button");
-minusBtn.id = "minus-btn";
-minusBtn.textContent="-";
-const plusBtn = document.createElement("button");
-plusBtn.id = "plus-btn";
-plusBtn.textContent="+";
-buttonContainer.append(minusBtn, plusBtn);
-
-let btn = buttonContainer.querySelectorAll("button");
-btn.forEach(button => {
-    button.classList.add("btn");
-});
- ``` 
-Creazione dei pulsanti + e -: Crea due pulsanti, assegna loro un ID e un contenuto, e li aggiunge al container dei pulsanti. Inoltre, aggiunge la classe “btn” a entrambi i pulsanti.
-
-
-```javascript
-const reloadButton = document.createElement("button");
-reloadButton.id = "reload-button";
-reloadButton.classList.add("reload-btn");
-const reloadImage = document.createElement("img");
-updateImage();
-reloadButton.appendChild(reloadImage);
-container.appendChild(reloadButton);
- ``` 
-Creazione del pulsante di reload: Crea un pulsante e un’immagine, aggiorna l’immagine utilizzando la funzione updateImage, aggiunge l’immagine al pulsante, e aggiunge il pulsante al container.
+Crea un nuovo elemento DOM usando il metodo document.createElement e passando il parametro tagName.
+Assegna al nuovo elemento l’id specificato tramite il parametro id.
+Assegna al nuovo elemento il contenuto HTML specificato tramite il parametro innerHtml.
+Aggiunge al nuovo elemento la classe CSS specificata tramite il parametro className usando il metodo element.classList.add.
+Appende il nuovo elemento al nodo padre specificato tramite il parametro container usando il metodo container.appendChild.
+Restituisce il nuovo elemento creato.
+La funzione createDomElement è utile per creare dinamicamente elementi DOM senza dover scrivere codice HTML statico.
 
 
 
@@ -91,9 +68,9 @@ window.addEventListener("resize", updateImage);
 
 function updateImage(){
     if (window.matchMedia("(max-width: 767px)").matches){
-        reloadImage.src = "assets/img/icons8-ruota-a-destra-ios-16-filled-16.png";
+        reloadButton.innerHTML = "<img src= 'assets/img/icons8-ruota-a-destra-ios-16-filled-16.png'>"; 
     } else {
-        reloadImage.src = "assets/img/icons8-ruota-a-destra-ios-16-filled-32.png";
+        reloadButton.innerHTML = "<img src='assets/img/icons8-ruota-a-destra-ios-16-filled-32.png'>"; 
     }
 }
  ``` 

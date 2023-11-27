@@ -51,7 +51,20 @@ main{
     padding-top: 30px;
 }
 
+.value{
+    width: 100%;
+    display: flex;
+    justify-content: center;
 
+}
+
+.btn-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    
+    
+}
 
 .btn { 
     width: 60px;
